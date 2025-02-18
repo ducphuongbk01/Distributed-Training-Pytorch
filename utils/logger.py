@@ -9,9 +9,7 @@ class Logger(object):
 
         # handler
         if os.path.exists(file):
-            inp = input(f"The log file {file} is existed. Do you want to remove before running? (y|n) ")
-            if inp=='y':
-                os.remove(file)
+            os.remove(file)
 
         stream_handler = logging.StreamHandler()
         file_handler = logging.FileHandler(file)
