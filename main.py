@@ -11,7 +11,7 @@ if __name__=="__main__":
                              labels=["cat", "dog", "snake"],
                              height=224,
                              width=224,
-                             max_epoch=100,
+                             max_epoch=300,
                              batch_size=16,
                              pin_memory=True,
                              have_validate=True,

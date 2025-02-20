@@ -53,7 +53,8 @@ class ExampleTrainer(Trainer):
     
     # Get objective (loss) function
     def build_criterion(self):
-        criterion = lambda x, y: F.cross_entropy(F.softmax(x, dim=-1), y, reduction="mean")
+        # criterion = lambda x, y: F.cross_entropy(F.softmax(x, dim=-1), y, reduction="mean")
+        criterion = lambda x, y: F.cross_entropy(x, y, reduction="mean")
         return criterion
     
     # Get opimizer 
@@ -62,8 +63,7 @@ class ExampleTrainer(Trainer):
 
     # Get scheduler
     def build_scheduler(self):
-        step = self.max_epoch//4
-        return optim.lr_scheduler.MultiStepLR(self.optimizer, [step, 2*step, 3*step], gamma=0.1)
+        return optim.lr_scheduler.MultiStepLR(self.optimizer, [50, 100, 200], gamma=0.1)
     
     # Design for batch preprocessing
     def preprocess_batch(self, batch):
